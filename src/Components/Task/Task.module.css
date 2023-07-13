@@ -1,0 +1,33 @@
+.listItem {
+    background-color: white;
+    padding: 15px;
+    margin: 10px 15px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+.taskItem {
+    margin: 0px 5px;
+}
+.taskAction {
+    display: flex;
+    gap: 10px;
+}
+.taskAction button {
+    padding: 4px 8px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.taskAction button:hover {
+    opacity: 0.6;
+}
+.taskAction button:first-child {
+    background-color: green;
+}
+.taskAction button:last-child {
+    background-color: red;
+}
+.save {
+    background-color: blue;
+}

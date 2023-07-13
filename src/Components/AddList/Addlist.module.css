@@ -1,0 +1,32 @@
+.addList {
+    min-width: 300px;
+    background-color: #F1F2F4;
+    text-align: left;
+    padding: 10px;
+    border-radius: 10px;
+}
+.taskName {
+    display: flex;
+    margin: 15px 0px;
+}
+
+.saveTask {
+    margin-left: auto;
+}
+
+.addList input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button {
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+}
+.demoTask {
+    padding: 4px 8px;
+}
