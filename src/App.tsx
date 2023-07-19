@@ -8,6 +8,9 @@ function App() {
         <h2>Trello App</h2>
       </div>
       <Board />
+      <div className='nav'>
+        <h2>Trello App footer</h2>
+      </div>
     </div>
   )
 }
