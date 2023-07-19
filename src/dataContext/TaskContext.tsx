@@ -9,7 +9,7 @@ export type Action =
   | { type: "DELETE_LIST"; payload: {id: number} }
   | { type: "CHANGE_TITLE"; payload: {id: number, newTitle: string} }
   | { type: "ADD_NEW_LIST"; payload: {title: string, taskList: string[], id: number} }
-  | { type: "DRAG_DROP"; payload: {removeBoardId: number, addBoardId: number, taskItem: string, taskId: number} }
+  | { type: "DRAG_DROP"; payload: {removeBoardId: number, addBoardId: number, taskData: string, taskId: number, position: string} }
   | { type: "UPDATE_LIST"; payload: ListProps[] };
 
 export const taskReducer = (state = DEFAULT_STATE, action: Action) => {
@@ -98,7 +98,7 @@ export const taskReducer = (state = DEFAULT_STATE, action: Action) => {
             list.forEach((item: ListProps) => {
                 if (item.id === action.payload.removeBoardId) {
                     let newTaskList = [...item.taskList]
-                    const index = newTaskList.indexOf(action.payload.taskItem)
+                    const index = newTaskList.indexOf(action.payload.taskData)
                     if (index !== -1) {
                         newTaskList.splice(index, 1)
                         item['taskList'] = newTaskList
@@ -108,8 +108,13 @@ export const taskReducer = (state = DEFAULT_STATE, action: Action) => {
             list.forEach((item: ListProps) => {
                 if (item.id === action.payload.addBoardId) {
                     let newTaskList = [...item.taskList]
-                    
-                    newTaskList.splice(action.payload.taskId, 0, action.payload.taskItem)
+                    if(action.payload.position === 'top') {
+                        newTaskList.splice(action.payload.taskId, 0, action.payload.taskData)
+                    } else if (action.payload.position === 'bottom') {
+                        newTaskList.splice(action.payload.taskId + 1, 0, action.payload.taskData)
+                    } else if (action.payload.position === 'default'){
+                        newTaskList.splice(action.payload.taskId, 0, action.payload.taskData)
+                    }
                     item['taskList'] = newTaskList
                 }
             })

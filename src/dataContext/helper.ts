@@ -43,7 +43,7 @@ export const changeTitle = (payload: {id: number, newTitle: string}): Action => 
     }
 }
 
-export const dragDrop = (payload: {removeBoardId: number, addBoardId: number, taskItem: string, taskId: number}): Action => {
+export const dragDrop = (payload: {removeBoardId: number, addBoardId: number, taskData: string, taskId: number, position: string }): Action => {
     return {
         type: 'DRAG_DROP',
         payload

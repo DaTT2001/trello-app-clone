@@ -1,18 +1,18 @@
-import Task from '../Task/Task'
+import Task from '../Task/Task';
+import styles from './TaskList.module.css';
 
-
-interface ITaskProps {
+interface ITaskListProps {
     task: string[]
     id: number
     isDragging: boolean
     handleDragging: (dragging: boolean) => void
-    handleUpdate: (deleteBoardId: number, taskData: string, newBoardId: number, taskId: number) => void
+    handleUpdate: (deleteBoardId: number, taskData: string, newBoardId: number, taskId: number, position: string) => void
 }
 
-function TaskList({ task, id, isDragging, handleDragging, handleUpdate }: ITaskProps) {
+function TaskList({ task, id, isDragging, handleDragging, handleUpdate }: ITaskListProps) {
     return (
         <div
-            className={`layout-cards ${isDragging ? 'layout-dragging' : ''}`}
+            className={styles.layoutCard}
         >
             {task.map((taskItem: string, index: number) => {
                 return (

@@ -1,3 +1,6 @@
 .layoutCard {
-    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
 }

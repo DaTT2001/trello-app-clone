@@ -3,18 +3,13 @@ import TaskList from '../TaskList/TaskList'
 import { useTask } from '../../dataContext/TaskProvider'
 import { addNewTask, changeTitle, deleteList } from '../../dataContext/helper'
 import styles from './List.module.css';
-
-interface ItemProps {
-    title: string
-    taskList: string[]
-    id: number
-}
+import { ListProps } from '../../shared/interfaces';
 
 interface IListProps {
-    item: ItemProps
+    item: ListProps
     isDragging: boolean
     handleDragging: (dragging: boolean) => void
-    handleUpdate: (deleteBoardId: number, taskData: string, newBoardId: number, taskId: number) => void
+    handleUpdate: (deleteBoardId: number, taskData: string, newBoardId: number, taskId: number, position: string) => void
 }
 
 function List({ item, isDragging, handleDragging, handleUpdate }: IListProps) {
@@ -55,7 +50,7 @@ function List({ item, isDragging, handleDragging, handleUpdate }: IListProps) {
         event.preventDefault();
         const data = event.dataTransfer.getData('card').split('-');
         if (item.taskList.length === 0 && data[0] !== '') {
-            handleUpdate(Number(data[1]), data[0], item.id, -1);
+            handleUpdate(Number(data[1]), data[0], item.id, -1, 'default');
         }
         handleDragging(false);
     }  

@@ -19,8 +19,8 @@ function Board() {
         setIsDragging(dragging)
     }
 
-    function handleUpdate(removeBoardId: number, taskItem: string, addBoardId: number, taskId: number) {
-        dispatch(dragDrop({removeBoardId: removeBoardId, addBoardId: addBoardId, taskItem: taskItem, taskId: taskId}))
+    function handleUpdate(removeBoardId: number, taskData: string, addBoardId: number, taskId: number, position: string) {
+        dispatch(dragDrop({removeBoardId: removeBoardId, addBoardId: addBoardId, taskData: taskData, taskId: taskId, position: position}))
     }
     
     useEffect(() => {
@@ -28,7 +28,7 @@ function Board() {
         setList(state.list);
     }, [state.list])
 
-    function handleListDrop(event: any, dropListId: any) {
+    function handleBoardDrop(event: any, dropListId: any) {
         event.preventDefault();
         if(!isDragging) {
             const draggedListId = event.dataTransfer.getData('listId');
@@ -45,7 +45,7 @@ function Board() {
         }
       }
     
-      function handleListDragStart(event: any, listId: any) {
+      function handleBoardDragStart(event: any, listId: any) {
         event.dataTransfer.setData('listId', listId.toString());
       }
 
@@ -57,9 +57,9 @@ function Board() {
                         <div 
                             key={item.id}
                             className={styles.listWrapper}
-                            onDragStart={(event) => handleListDragStart(event, item.id)}
+                            onDragStart={(event) => handleBoardDragStart(event, item.id)}
                             onDragOver={(event) => event.preventDefault()}
-                            onDrop={(event) => handleListDrop(event, item.id)}
+                            onDrop={(event) => handleBoardDrop(event, item.id)}
                             draggable = {!isDragging}
                         >
                             <List
