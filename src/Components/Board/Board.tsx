@@ -27,7 +27,7 @@ function Board() {
         setAddList(false)
         setList(state.list);
     }, [state.list])
-
+    
     function handleBoardDrop(event: any, dropListId: any) {
         event.preventDefault();
         if(!isDragging) {
